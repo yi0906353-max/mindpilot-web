@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MindPilot Web
 
-## Getting Started
+MindPilot AI 个人助理的 Web 前端。
 
-First, run the development server:
+## 功能
+
+- **登录页** - 调用 user-svc 进行 JWT 认证
+- **收件箱** - 展示 inbox-svc 的消息列表，支持分类筛选
+- **每日简报** - 展示 daily-briefing-svc 生成的简报
+- **一句话执行** - 调用 agent-svc 执行自然语言任务
+
+## 技术栈
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- shadcn/ui
+- Lucide React Icons
+
+## 快速开始
+
+### 1. 安装依赖
+
+```bash
+npm install
+```
+
+### 2. 启动开发服务器
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 启动后端服务
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+确保以下服务已运行：
 
-## Learn More
+| 服务 | 端口 | 说明 |
+|------|------|------|
+| user-svc | 3002 | 用户认证 |
+| inbox-svc | 3001 | 消息收件箱 |
+| agent-svc | 3003 | Agent 执行引擎 |
+| daily-briefing-svc | 3004 | 每日简报 |
 
-To learn more about Next.js, take a look at the following resources:
+## 项目结构
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── login/          # 登录页
+│   ├── inbox/          # 收件箱
+│   ├── briefing/       # 每日简报
+│   ├── execute/        # 一句话执行
+│   └── layout.tsx      # 根布局
+├── components/
+│   ├── layout/         # 布局组件 (Navbar, AppLayout)
+│   └── ui/             # shadcn/ui 组件
+├── hooks/
+│   └── useAuth.ts      # 认证 hook
+├── lib/
+│   ├── api.ts          # API 调用工具
+│   └── utils.ts        # 工具函数
+└── types/
+    └── index.ts        # TypeScript 类型定义
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 环境变量
 
-## Deploy on Vercel
+创建 `.env.local`：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+NEXT_PUBLIC_API_BASE=http://localhost
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 构建部署
+
+```bash
+npm run build
+npm start
+```

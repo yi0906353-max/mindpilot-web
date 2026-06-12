@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "mindpilot",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    }
+  ],
+  "env": {
+    "API_GATEWAY": "@api-gateway"
+  }
+}
