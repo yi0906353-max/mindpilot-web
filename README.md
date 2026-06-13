@@ -80,4 +80,4 @@ NEXT_PUBLIC_API_BASE=http://localhost
 ```bash
 npm run build
 npm start
-```
+``` 
