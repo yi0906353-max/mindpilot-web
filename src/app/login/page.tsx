@@ -143,9 +143,12 @@ export default function LoginPage() {
         </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-sm">
-          <div className="lg:hidden flex items-center gap-2 mb-8"><Brain className="h-8 w-8 text-blue-600" /><span className="text-xl font-bold">MindPilot</span></div>
+          <div className="lg:hidden flex items-center justify-center gap-2 mb-6 md:mb-8">
+            <Brain className="h-8 w-8 text-blue-600" />
+            <span className="text-xl font-bold">MindPilot</span>
+          </div>
 
           <div className="flex gap-2 mb-6">
             <Button variant={authTab === 'login' ? 'default' : 'outline'} size="sm" className="flex-1" onClick={() => { setAuthTab('login'); setError(''); }}>

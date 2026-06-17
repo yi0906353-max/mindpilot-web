@@ -131,15 +131,15 @@ export default function DashboardPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold">控制台</h1>
-            <p className="text-sm text-gray-500 mt-1">MindPilot 系统概览</p>
+            <h1 className="text-xl md:text-2xl font-bold">控制台</h1>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">MindPilot 系统概览</p>
           </div>
-          <Button variant="outline" onClick={loadData}>
-            <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            刷新
+          <Button variant="outline" size="sm" onClick={loadData}>
+            <RefreshCw className={`h-4 w-4 mr-1 md:mr-2 ${loading ? 'animate-spin' : ''}`} />
+            <span className="hidden md:inline">刷新</span>
           </Button>
         </div>
 
@@ -193,14 +193,14 @@ export default function DashboardPage() {
 
         {/* 快速推送 */}
         <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-purple-500" />
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base md:text-lg flex items-center gap-2">
+              <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-purple-500" />
               快速推送
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-3">
+            <div className="space-y-3 md:space-y-0 md:flex md:gap-3">
               <Input
                 placeholder="输入主题，例如：AI 写作工具推荐"
                 value={quickTopic}
@@ -208,20 +208,22 @@ export default function DashboardPage() {
                 onKeyDown={e => { if (e.key === 'Enter' && !generating) handleQuickGenerate(); }}
                 className="flex-1"
               />
-              <select
-                value={quickPlatform}
-                onChange={e => setQuickPlatform(e.target.value)}
-                className="px-3 border rounded-md text-sm"
-              >
-                <option value="xiaohongshu">小红书</option>
-                <option value="douyin">抖音</option>
-                <option value="wechat">公众号</option>
-                <option value="weibo">微博</option>
-              </select>
-              <Button onClick={handleQuickGenerate} disabled={generating || !quickTopic.trim()}>
-                {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-                生成
-              </Button>
+              <div className="flex gap-2">
+                <select
+                  value={quickPlatform}
+                  onChange={e => setQuickPlatform(e.target.value)}
+                  className="flex-1 md:flex-none px-3 border rounded-md text-sm"
+                >
+                  <option value="xiaohongshu">小红书</option>
+                  <option value="douyin">抖音</option>
+                  <option value="wechat">公众号</option>
+                  <option value="weibo">微博</option>
+                </select>
+                <Button onClick={handleQuickGenerate} disabled={generating || !quickTopic.trim()}>
+                  {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+                  <span className="hidden md:inline ml-1">生成</span>
+                </Button>
+              </div>
             </div>
             {quickContent && (
               <div className="mt-3">
@@ -245,19 +247,19 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {/* 快捷操作 */}
           <Card className="md:col-span-1">
-            <CardHeader>
-              <CardTitle className="text-lg">快捷操作</CardTitle>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base md:text-lg">快捷操作</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-3 md:grid-cols-2 gap-2 md:gap-3">
                 {quickActions.map(action => (
                   <Button
                     key={action.href}
                     variant="outline"
-                    className="h-16 flex flex-col items-center gap-1"
+                    className="h-14 md:h-16 flex flex-col items-center gap-1"
                     onClick={() => router.push(action.href)}
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${action.color}`}>
