@@ -243,28 +243,28 @@ export default function ContentPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <PenTool className="h-6 w-6 text-purple-600" />
+          <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
+            <PenTool className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />
             灵墨 · 内容创作
           </h1>
-          <p className="text-sm text-gray-500 mt-1">AI 驱动的多平台内容生成、爆款标题、热点选题</p>
+          <p className="text-xs md:text-sm text-gray-500 mt-1">AI 驱动的多平台内容生成、爆款标题、热点选题</p>
         </div>
 
         <Tabs value={tab} onValueChange={setTab}>
-          <TabsList>
-            <TabsTrigger value="generate" className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4" />AI 生成
+          <TabsList className="w-full md:w-auto overflow-x-auto">
+            <TabsTrigger value="generate" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm">
+              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />AI 生成
             </TabsTrigger>
-            <TabsTrigger value="library" className="flex items-center gap-2">
-              <FileText className="h-4 w-4" />内容库
+            <TabsTrigger value="library" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm">
+              <FileText className="h-3 w-3 md:h-4 md:w-4" />内容库
             </TabsTrigger>
-            <TabsTrigger value="topics" className="flex items-center gap-2">
-              <Flame className="h-4 w-4" />热点话题
+            <TabsTrigger value="topics" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm">
+              <Flame className="h-3 w-3 md:h-4 md:w-4" />热点
             </TabsTrigger>
-            <TabsTrigger value="titles" className="flex items-center gap-2">
-              <Zap className="h-4 w-4" />爆款标题
+            <TabsTrigger value="titles" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm">
+              <Zap className="h-3 w-3 md:h-4 md:w-4" />标题
             </TabsTrigger>
           </TabsList>
 
@@ -287,14 +287,14 @@ export default function ContentPage() {
                   {/* 平台选择 */}
                   <div>
                     <label className="text-sm font-medium mb-2 block">目标平台（可多选）</label>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2">
                       {Object.entries(platformConfig).map(([id, cfg]) => (
                         <Button
                           key={id}
                           variant={selectedPlatforms.includes(id) ? 'default' : 'outline'}
                           size="sm"
                           onClick={() => togglePlatform(id)}
-                          className="flex items-center gap-1.5"
+                          className="flex items-center gap-1 text-xs md:text-sm"
                         >
                           <span>{cfg.icon}</span>
                           {cfg.name}
@@ -304,10 +304,10 @@ export default function ContentPage() {
                   </div>
 
                   {/* 风格 + 关键词 */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-2 md:gap-4">
                     <div>
                       <label className="text-sm font-medium mb-2 block">语气风格</label>
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {toneOptions.map(t => (
                           <Button
                             key={t.value}
