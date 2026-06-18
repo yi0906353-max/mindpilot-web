@@ -120,11 +120,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 via-emerald-50 to-teal-100">
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white p-12 flex-col justify-center relative overflow-hidden">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-200 via-emerald-100 to-teal-200">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 text-white p-12 flex-col justify-center relative overflow-hidden">
         {/* 装饰性渐变圆 */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-400/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
         <div className="max-w-md relative z-10">
           <div className="flex items-center gap-3 mb-8">
@@ -140,7 +140,7 @@ export default function LoginPage() {
             ].map((f, i) => (
               <div key={i} className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center"><f.icon className="h-5 w-5" /></div>
-                <div><p className="font-medium">{f.title}</p><p className="text-sm text-emerald-200">{f.desc}</p></div>
+                <div><p className="font-medium">{f.title}</p><p className="text-sm text-emerald-100">{f.desc}</p></div>
               </div>
             ))}
           </div>
