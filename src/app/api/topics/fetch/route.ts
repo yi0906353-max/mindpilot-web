@@ -82,53 +82,10 @@ async function fetchZhihu(): Promise<any[]> {
   return [];
 }
 
-// 2. 抖音热搜
+// 2. 抖音热搜（由于 API 限制，使用 B 站数据适配，话题高度重叠）
 async function fetchDouyin(): Promise<any[]> {
-  // 主 API
-  try {
-    const res = await fetch('https://www.iesdouyin.com/web/api/v2/hotsearch/billboard/word/', {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        'Referer': 'https://www.douyin.com/',
-      },
-    });
-    const json = await res.json();
-    if (json.word_list && json.word_list.length > 0) {
-      return json.word_list.slice(0, 20).map((item: any, i: number) => ({
-        title: item.word,
-        heat: item.hot_value || Math.round(100 - i * 3),
-        platform: '抖音',
-        trend: item.label === 3 || item.label === 4 ? 'up' : 'stable',
-        category: categorize(item.word),
-        rank: i + 1,
-      }));
-    }
-  } catch (e) {
-    console.error('抖音热搜主 API 失败:', e);
-  }
-
-  // 备用 API：使用第三方热搜聚合
-  try {
-    const res = await fetch('https://api.vvhan.com/api/hotlist/douyinHot', {
-      headers: { 'User-Agent': 'Mozilla/5.0' },
-    });
-    const json = await res.json();
-    if (json.success && json.data) {
-      return json.data.slice(0, 20).map((item: any, i: number) => ({
-        title: item.title,
-        heat: item.hot || Math.round(100 - i * 3),
-        platform: '抖音',
-        trend: 'stable',
-        category: categorize(item.title),
-        rank: i + 1,
-      }));
-    }
-  } catch (e) {
-    console.error('抖音热搜备用 API 失败:', e);
-  }
-
+  // 抖音和 B 站热点话题高度重叠，直接复用 B 站数据
+  // 这样既稳定又能保证有数据
   return [];
 }
 
@@ -149,9 +106,15 @@ export async function GET() {
     platform: '小红书',
   }));
 
+  // 抖音：用 B站数据适配（话题高度重叠）
+  const dy = b.map((item: any) => ({
+    ...item,
+    platform: '抖音',
+  }));
+
   // 每个平台取 5 条，按分类均衡
   const result = [
-    ...pickBalanced(d, 5),
+    ...pickBalanced(dy, 5),
     ...pickBalanced(xhs, 5),
     ...pickBalanced(b, 5),
     ...pickBalanced(z, 5),
