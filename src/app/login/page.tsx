@@ -120,18 +120,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white p-12 flex-col justify-center relative overflow-hidden">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 via-emerald-50 to-teal-100">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white p-12 flex-col justify-center relative overflow-hidden">
         {/* 装饰性渐变圆 */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
         <div className="max-w-md relative z-10">
           <div className="flex items-center gap-3 mb-8">
             <Brain className="h-10 w-10" /><span className="text-2xl font-bold">MindPilot</span>
           </div>
           <h1 className="text-4xl font-bold mb-4 leading-tight">你的 AI 个人助理平台</h1>
-          <p className="text-blue-100 text-lg mb-10">管理消息、创作内容、自动推送 — 一个平台搞定所有事。</p>
+          <p className="text-emerald-100 text-lg mb-10">管理消息、创作内容、自动推送 — 一个平台搞定所有事。</p>
           <div className="space-y-6">
             {[
               { icon: Sparkles, title: 'AI 内容创作', desc: '一键生成多平台内容' },
@@ -140,7 +140,7 @@ export default function LoginPage() {
             ].map((f, i) => (
               <div key={i} className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center"><f.icon className="h-5 w-5" /></div>
-                <div><p className="font-medium">{f.title}</p><p className="text-sm text-blue-200">{f.desc}</p></div>
+                <div><p className="font-medium">{f.title}</p><p className="text-sm text-emerald-200">{f.desc}</p></div>
               </div>
             ))}
           </div>
@@ -150,7 +150,7 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-sm">
           <div className="lg:hidden flex items-center justify-center gap-2 mb-6 md:mb-8">
-            <Brain className="h-8 w-8 text-blue-600" />
+            <Brain className="h-8 w-8 text-emerald-600" />
             <span className="text-xl font-bold">MindPilot</span>
           </div>
 
