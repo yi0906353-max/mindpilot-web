@@ -191,7 +191,7 @@ export default function LoginPage() {
               <div className="space-y-2"><Label>密码</Label><Input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} required className="h-11" /></div>
               <Button type="submit" className="w-full h-11" disabled={loading}>{loading ? '登录中...' : '登录'}</Button>
             </form>
-          )}
+          }
 
           {/* ===== 注册表单 ===== */}
           {authTab === 'register' && (
