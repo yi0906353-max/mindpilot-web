@@ -5,11 +5,11 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Brain, Sparkles, Shield, Zap, Fingerprint, Mail, Phone, UserPlus } from 'lucide-react';
+import { Brain, Sparkles, Shield, Zap, Mail, Phone, UserPlus } from 'lucide-react';
 import { toast } from 'sonner';
 
 type AuthTab = 'login' | 'register';
-type LoginMethod = 'email' | 'phone' | 'webauthn';
+type LoginMethod = 'email' | 'phone';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -27,7 +27,7 @@ export default function LoginPage() {
 
   // 格式校验
   const validateInput = (): string | null => {
-    if (loginMethod !== 'webauthn' && loginMethod !== 'phone') {
+    if (loginMethod !== 'phone') {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!re.test(email)) return '请输入真实的邮箱地址，如 your@email.com';
       return null;
@@ -132,7 +132,7 @@ export default function LoginPage() {
             {[
               { icon: Sparkles, title: 'AI 内容创作', desc: '一键生成多平台内容' },
               { icon: Zap, title: '智能推送', desc: '钉钉/微信自动推送' },
-              { icon: Shield, title: '安全认证', desc: '验证码 + 生物识别' },
+              { icon: Shield, title: '安全认证', desc: '验证码登录' },
             ].map((f, i) => (
               <div key={i} className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center"><f.icon className="h-5 w-5" /></div>
@@ -167,7 +167,6 @@ export default function LoginPage() {
             <div className="flex gap-2 mb-6">
               <Button variant={loginMethod === 'email' ? 'default' : 'outline'} size="sm" className="flex-1" onClick={() => setLoginMethod('email')}><Mail className="h-4 w-4 mr-1" />邮箱</Button>
               <Button variant={loginMethod === 'phone' ? 'default' : 'outline'} size="sm" className="flex-1" onClick={() => setLoginMethod('phone')}><Phone className="h-4 w-4 mr-1" />手机</Button>
-              <Button variant={loginMethod === 'webauthn' ? 'default' : 'outline'} size="sm" className="flex-1" onClick={() => setLoginMethod('webauthn')}><Fingerprint className="h-4 w-4 mr-1" />生物识别</Button>
             </div>
           )}
 
@@ -182,12 +181,7 @@ export default function LoginPage() {
           {error && <div className="p-3 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200 mb-4">{error}</div>}
 
           {/* ===== 登录表单 ===== */}
-          {authTab === 'login' && loginMethod === 'webauthn' ? (
-            <div className="space-y-4">
-              <div className="space-y-2"><Label>邮箱</Label><Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} className="h-11" /></div>
-              <Button className="w-full h-11" disabled={loading}><Fingerprint className="h-4 w-4 mr-2" />使用生物识别登录</Button>
-            </div>
-          ) : authTab === 'login' ? (
+          {authTab === 'login' ? (
             <form onSubmit={handleLogin} className="space-y-4">
               {loginMethod === 'email' ? (
                 <div className="space-y-2"><Label>邮箱</Label><Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required className="h-11" /></div>
@@ -197,7 +191,7 @@ export default function LoginPage() {
               <div className="space-y-2"><Label>密码</Label><Input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} required className="h-11" /></div>
               <Button type="submit" className="w-full h-11" disabled={loading}>{loading ? '登录中...' : '登录'}</Button>
             </form>
-          ) : null}
+          )}
 
           {/* ===== 注册表单 ===== */}
           {authTab === 'register' && (
