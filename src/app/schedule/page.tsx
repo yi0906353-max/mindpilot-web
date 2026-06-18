@@ -122,14 +122,14 @@ export default function SchedulePage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <CalendarClock className="h-6 w-6 text-blue-600" />
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex justify-between items-center gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
+              <CalendarClock className="h-6 w-6 text-blue-600 shrink-0" />
               定时发布
             </h1>
-            <p className="text-sm text-gray-500 mt-1">设定时间自动推送内容到钉钉/微信</p>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">设定时间自动推送内容到钉钉/微信</p>
           </div>
           <Button onClick={() => setShowCreate(true)}>
             <Plus className="h-4 w-4 mr-2" />新建定时
@@ -154,7 +154,7 @@ export default function SchedulePage() {
               const StatusIcon = cfg.icon;
               return (
                 <Card key={post.id} className="hover:shadow-sm transition-shadow">
-                  <CardContent className="py-4">
+                  <CardContent className="p-4 md:p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">

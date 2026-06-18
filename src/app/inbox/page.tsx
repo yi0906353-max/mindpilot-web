@@ -102,16 +102,16 @@ export default function InboxPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold flex items-center gap-2">
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
               <Inbox className="h-6 w-6 text-blue-600" />
               收件箱
             </h1>
-            <p className="text-sm text-gray-500 mt-1">共 {messages.length} 条消息，{topThree.length} 条需处理</p>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">共 {messages.length} 条消息，{topThree.length} 条需处理</p>
           </div>
-          <Button onClick={fetchMessages} variant="outline" size="sm">
+          <Button onClick={fetchMessages} variant="outline" size="sm" className="shrink-0">
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
             刷新
           </Button>
@@ -148,7 +148,7 @@ export default function InboxPage() {
         )}
 
         {/* 分类筛选 */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto pb-1">
           <Button
             variant={filter === 'all' ? 'default' : 'outline'}
             size="sm"
@@ -189,7 +189,7 @@ export default function InboxPage() {
               const CatIcon = catConfig.icon;
               return (
                 <Card key={msg.id} className="hover:shadow-sm transition-shadow">
-                  <CardContent className="py-4">
+                  <CardContent className="p-4 md:p-6">
                     <div className="flex items-start gap-3">
                       <div className="flex-shrink-0 mt-1">
                         <CatIcon className="h-5 w-5 text-gray-400" />

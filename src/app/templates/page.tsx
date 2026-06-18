@@ -139,23 +139,23 @@ export default function TemplatesPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">通知模板</h1>
-            <p className="text-sm text-gray-500 mt-1">管理微信、邮件、短信通知模板</p>
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex justify-between items-center gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold">通知模板</h1>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">管理微信、邮件、短信通知模板</p>
           </div>
           <Button onClick={() => openEditor()}>
             <Plus className="h-4 w-4 mr-2" />新建模板
           </Button>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input placeholder="搜索模板..." value={search} onChange={e => setSearch(e.target.value)} className="pl-10" />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1">
             {['all', 'wechat', 'dingtalk', 'email', 'sms'].map(ch => (
               <Button
                 key={ch}
@@ -177,7 +177,7 @@ export default function TemplatesPage() {
             <p className="text-gray-400">{templates.length === 0 ? '暂无模板，点击上方按钮创建' : '没有匹配的模板'}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {filtered.map(t => (
               <Card key={t.id} className="hover:shadow-md transition-shadow">
                 <CardHeader className="pb-3">

@@ -66,9 +66,9 @@ export default function BriefingPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">每日简报</h1>
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-xl md:text-2xl font-bold">每日简报</h1>
           <Button
             onClick={generateBriefing}
             disabled={generating}
@@ -103,7 +103,7 @@ export default function BriefingPage() {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
             {/* 今日三件事 */}
             <Card>
               <CardHeader>

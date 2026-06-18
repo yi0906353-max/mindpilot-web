@@ -125,25 +125,25 @@ export default function HistoryPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <History className="h-6 w-6 text-purple-600" />
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex justify-between items-center gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
+              <History className="h-6 w-6 text-purple-600 shrink-0" />
               内容历史
             </h1>
-            <p className="text-sm text-gray-500 mt-1">共 {items.length} 条内容</p>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">共 {items.length} 条内容</p>
           </div>
-          <Button variant="outline" onClick={loadItems}>刷新</Button>
+          <Button variant="outline" onClick={loadItems} className="shrink-0">刷新</Button>
         </div>
 
         {/* 搜索 + 筛选 */}
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input placeholder="搜索主题或内容..." value={search} onChange={e => setSearch(e.target.value)} className="pl-10" />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1">
             {['all', ...Object.keys(platformConfig)].map(p => (
               <Button key={p} variant={platformFilter === p ? 'default' : 'outline'} size="sm" onClick={() => setPlatformFilter(p)}>
                 {p === 'all' ? '全部' : (platformConfig[p]?.icon + ' ' + platformConfig[p]?.name)}
@@ -169,7 +169,7 @@ export default function HistoryPage() {
               const date = item.created_at || item.createdAt;
               return (
                 <Card key={item.id} className="hover:shadow-sm transition-shadow">
-                  <CardContent className="py-4">
+                  <CardContent className="p-4 md:p-6">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <Badge className={cfg.color}>{cfg.icon} {cfg.name}</Badge>

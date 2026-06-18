@@ -80,15 +80,15 @@ export default function ExecutePage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold flex items-center gap-2">
+      <div className="space-y-4 md:space-y-6">
+        <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
           <Zap className="h-6 w-6 text-blue-600" />
           一句话执行
         </h1>
 
         {/* 输入区 */}
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 md:p-6">
             <div className="space-y-4">
               <div className="relative">
                 <Textarea

@@ -209,14 +209,14 @@ export default function AnalyticsPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <BarChart3 className="h-6 w-6 text-blue-600" />
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex justify-between items-center gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
+              <BarChart3 className="h-6 w-6 text-blue-600 shrink-0" />
               内容复盘
             </h1>
-            <p className="text-sm text-gray-500 mt-1">推送效果分析与数据洞察</p>
+            <p className="text-xs md:text-sm text-gray-500 mt-1">推送效果分析与数据洞察</p>
           </div>
           <Button variant="outline" onClick={loadData}>
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />刷新
@@ -256,30 +256,30 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* 核心指标 + 成功率环 */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          <Card className="md:col-span-1">
-            <CardContent className="py-6 flex flex-col items-center">
-              <div className="relative w-24 h-24">
-                <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+          <Card className="col-span-2 md:col-span-1">
+            <CardContent className="py-4 md:py-6 flex flex-col items-center">
+              <div className="relative w-16 h-16 md:w-24 md:h-24">
+                <svg className="w-16 h-16 md:w-24 md:h-24 transform -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
                   <circle cx="50" cy="50" r="40" fill="none"
                     stroke={successRate >= 80 ? "#22c55e" : successRate >= 50 ? "#f59e0b" : "#ef4444"}
                     strokeWidth="8" strokeDasharray={`${successRate * 2.51} 251`} strokeLinecap="round" />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xl font-bold">{successRate}%</span>
+                  <span className="text-base md:text-xl font-bold">{successRate}%</span>
                 </div>
               </div>
               <p className="text-sm text-gray-500 mt-2">成功率</p>
             </CardContent>
           </Card>
-          <Card className="md:col-span-1"><CardContent className="py-4 text-center"><p className="text-3xl font-bold text-blue-600">{fStats.total}</p><p className="text-sm text-gray-500">总推送</p></CardContent></Card>
-          <Card className="md:col-span-1"><CardContent className="py-4 text-center"><p className="text-3xl font-bold text-green-600">{fStats.sent}</p><p className="text-sm text-gray-500">成功</p></CardContent></Card>
-          <Card className="md:col-span-1"><CardContent className="py-4 text-center"><p className="text-3xl font-bold text-red-600">{fStats.failed}</p><p className="text-sm text-gray-500">失败</p></CardContent></Card>
-          <Card className="md:col-span-1"><CardContent className="py-4 text-center"><p className="text-3xl font-bold text-amber-600">{fStats.retrying + scheduleCount}</p><p className="text-sm text-gray-500">进行中</p></CardContent></Card>
+          <Card className="md:col-span-1"><CardContent className="py-3 md:py-4 text-center"><p className="text-xl md:text-3xl font-bold text-blue-600">{fStats.total}</p><p className="text-xs md:text-sm text-gray-500">总推送</p></CardContent></Card>
+          <Card className="md:col-span-1"><CardContent className="py-3 md:py-4 text-center"><p className="text-xl md:text-3xl font-bold text-green-600">{fStats.sent}</p><p className="text-xs md:text-sm text-gray-500">成功</p></CardContent></Card>
+          <Card className="md:col-span-1"><CardContent className="py-3 md:py-4 text-center"><p className="text-xl md:text-3xl font-bold text-red-600">{fStats.failed}</p><p className="text-xs md:text-sm text-gray-500">失败</p></CardContent></Card>
+          <Card className="md:col-span-1"><CardContent className="py-3 md:py-4 text-center"><p className="text-xl md:text-3xl font-bold text-amber-600">{fStats.retrying + scheduleCount}</p><p className="text-xs md:text-sm text-gray-500">进行中</p></CardContent></Card>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {/* 效果趋势 - 24 小时分布 */}
           <Card>
             <CardHeader><CardTitle className="text-lg flex items-center gap-2"><TrendingUp className="h-5 w-5 text-blue-500" />效果趋势</CardTitle></CardHeader>

@@ -71,33 +71,33 @@ export default function SourcesPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
+          <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
             <Link2 className="h-6 w-6 text-blue-600" />
             消息源管理
           </h1>
-          <p className="text-sm text-gray-500 mt-1">连接你的消息平台，让 AI 自动整理</p>
+          <p className="text-xs md:text-sm text-gray-500 mt-1">连接你的消息平台，让 AI 自动整理</p>
         </div>
 
         {/* 状态概览 */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           <Card>
-            <CardContent className="py-4 text-center">
-              <p className="text-2xl font-bold text-green-600">{sources.filter(s => s.status === 'connected').length}</p>
-              <p className="text-sm text-gray-500">已连接</p>
+            <CardContent className="py-3 md:py-4 text-center">
+              <p className="text-xl md:text-2xl font-bold text-green-600">{sources.filter(s => s.status === 'connected').length}</p>
+              <p className="text-xs md:text-sm text-gray-500">已连接</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="py-4 text-center">
-              <p className="text-2xl font-bold text-gray-400">{sources.filter(s => s.status === 'disconnected').length}</p>
-              <p className="text-sm text-gray-500">未连接</p>
+            <CardContent className="py-3 md:py-4 text-center">
+              <p className="text-xl md:text-2xl font-bold text-gray-400">{sources.filter(s => s.status === 'disconnected').length}</p>
+              <p className="text-xs md:text-sm text-gray-500">未连接</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="py-4 text-center">
-              <p className="text-2xl font-bold text-red-500">{sources.filter(s => s.status === 'error').length}</p>
-              <p className="text-sm text-gray-500">异常</p>
+            <CardContent className="py-3 md:py-4 text-center">
+              <p className="text-xl md:text-2xl font-bold text-red-500">{sources.filter(s => s.status === 'error').length}</p>
+              <p className="text-xs md:text-sm text-gray-500">异常</p>
             </CardContent>
           </Card>
         </div>
@@ -106,9 +106,9 @@ export default function SourcesPage() {
         <div className="space-y-4">
           {sources.map(source => (
             <Card key={source.id} className="hover:shadow-md transition-shadow">
-              <CardContent className="py-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-2xl">
+              <CardContent className="p-4 md:p-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-100 flex items-center justify-center text-xl md:text-2xl shrink-0">
                     {source.icon}
                   </div>
                   <div className="flex-1">

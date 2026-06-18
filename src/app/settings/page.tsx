@@ -114,9 +114,9 @@ export default function SettingsPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6 max-w-3xl">
+      <div className="space-y-4 md:space-y-6 max-w-3xl">
         <div>
-          <h1 className="text-2xl font-bold">推送设置</h1>
+          <h1 className="text-xl md:text-2xl font-bold">推送设置</h1>
           <p className="text-sm text-gray-500 mt-1">配置消息推送通道，支持多渠道</p>
           <Button variant="outline" size="sm" className="mt-2" onClick={() => window.location.href = '/onboarding'}>
             🚀 新手引导

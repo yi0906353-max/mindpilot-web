@@ -109,16 +109,16 @@ export default function MonitorPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         {/* 页面标题 */}
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">监控面板</h1>
-            <p className="text-sm text-gray-500 mt-1">
+        <div className="flex justify-between items-center gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold">监控面板</h1>
+            <p className="text-xs md:text-sm text-gray-500 mt-1 truncate">
               {data ? `最后更新: ${new Date(data.timestamp).toLocaleTimeString('zh-CN')}` : '加载中...'}
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <label className="flex items-center gap-2 text-sm text-gray-500 cursor-pointer">
               <input
                 type="checkbox"
@@ -137,11 +137,11 @@ export default function MonitorPage() {
 
         {/* 总体状态 */}
         <Card className={`border-2 ${oc.color}`}>
-          <CardContent className="py-6">
-            <div className="flex items-center gap-4">
-              <OverallIcon className={`h-8 w-8 ${oc.text}`} />
+          <CardContent className="py-4 md:py-6">
+            <div className="flex items-center gap-3 md:gap-4">
+              <OverallIcon className={`h-6 w-6 md:h-8 md:w-8 ${oc.text}`} />
               <div>
-                <p className={`text-xl font-bold ${oc.text}`}>{oc.label}</p>
+                <p className={`text-lg md:text-xl font-bold ${oc.text}`}>{oc.label}</p>
                 <p className="text-sm text-gray-500">
                   {data?.services.filter(s => s.status === 'ok').length || 0} / {data?.services.length || 8} 服务正常
                 </p>
@@ -154,7 +154,7 @@ export default function MonitorPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data?.services.map(svc => (
             <Card key={svc.name} className="hover:shadow-sm transition-shadow">
-              <CardContent className="py-4">
+              <CardContent className="p-4 md:p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-gray-100 rounded-lg">
