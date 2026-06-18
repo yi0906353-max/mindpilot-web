@@ -120,9 +120,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen">
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 to-purple-700 text-white p-12 flex-col justify-center">
-        <div className="max-w-md">
+    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white p-12 flex-col justify-center relative overflow-hidden">
+        {/* 装饰性渐变圆 */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+
+        <div className="max-w-md relative z-10">
           <div className="flex items-center gap-3 mb-8">
             <Brain className="h-10 w-10" /><span className="text-2xl font-bold">MindPilot</span>
           </div>
