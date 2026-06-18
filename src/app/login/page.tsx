@@ -223,8 +223,8 @@ export default function LoginPage() {
             </form>
           )}
 
-          {/* OAuth */}
-          {authTab === 'login' && (
+          {/* OAuth - 暂时隐藏，等配置好后再显示 */}
+          {/* {authTab === 'login' && (
             <>
               <div className="relative my-6"><div className="absolute inset-0 flex items-center"><div className="w-full border-t" /></div><div className="relative flex justify-center text-sm"><span className="px-2 bg-white text-gray-500">或使用第三方登录</span></div></div>
               <div className="space-y-3">
